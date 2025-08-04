@@ -1,26 +1,40 @@
 
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join the Telegram group </title>
-  <meta http-equiv="refresh" content="0; url=https://t.me/+2deIGn9wC0diN2I0">
+  <title>Join Telegram Group</title>
   <script>
-    setTimeout(function () {
-      window.location.href = "https://telegram.org/dl";
-    }, 2000);
-  </script>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding-top: 50px;
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     }
-  </style>
+
+    function isAndroid() {
+      return /android/i.test(navigator.userAgent);
+    }
+
+    function redirect() {
+      const telegramLink = "https://t.me/+2deIGn9wC0diN2I0";
+
+      // Try to open Telegram
+      window.location.href = telegramLink;
+
+      // Fallback to app store after 2 seconds
+      setTimeout(() => {
+        if (isIOS()) {
+          window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
+        } else if (isAndroid()) {
+          window.location.href = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
+        } else {
+          window.location.href = "https://web.telegram.org/";
+        }
+      }, 2000);
+    }
+  </script>
 </head>
-<body>
-  <h1>Redirect to Telegram ...</h1>
-  <p>If nothing happens , <a href="https://t.me/+2deIGn9wC0diN2I0">Click here </a>.</p>
+<body onload="redirect()" style="text-align: center; font-family: sans-serif; padding-top: 50px;">
+  <h1>Redirecting to Telegram...</h1>
+  <p>If nothing happens, <a href="https://t.me/+2deIGn9wC0diN2I0">click here</a>.</p>
 </body>
 </html>
