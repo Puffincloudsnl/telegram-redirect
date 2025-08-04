@@ -1,48 +1,68 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Join Telegram Group</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dołącz do Puffin Clouds</title>
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f8f4ff, #dcd3ea);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
       text-align: center;
-      padding-top: 60px;
-      background-color: #f4f4f4;
     }
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 25px;
+    img {
+      width: 180px;
+      margin-top: 40px;
+    }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      color: #333;
+    }
+    p {
+      color: #555;
+      max-width: 300px;
+    }
+    .btn {
+      display: block;
+      width: 260px;
+      padding: 15px;
+      margin: 15px;
       font-size: 16px;
-      text-decoration: none;
+      font-weight: bold;
       color: white;
-      background-color: #0088cc;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
+      background-color: #5b3cc4;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
     }
-    .button:hover {
-      background-color: #0070a3;
+    .btn.secondary {
+      background-color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>Join our Telegram Group</h1>
-  <p>If you already have Telegram installed, tap the button below:</p>
-  <a class="button" id="joinBtn" href="#">Open in Telegram</a>
-  <p style="margin-top: 20px;">If nothing happens, you'll be redirected to download Telegram.</p>
+  <img src="logo.png" alt="Puffin Clouds Logo"/>
+  <h1>Puffin Clouds</h1>
+  <p>Dołącz do naszego kanału Telegram, aby być na bieżąco!</p>
+  <a class="btn" href="tg://join?invite=2deIGn9wC0diN2I0">Mam Telegram – Dołącz</a>
+  <a class="btn secondary" id="fallback">Nie mam Telegrama – Pobierz</a>
 
   <script>
-    document.getElementById("joinBtn").addEventListener("click", function(e) {
-      e.preventDefault();
-      // Try to open Telegram using tg:// scheme
-      window.location.href = "tg://join?invite=2deIGn9wC0diN2I0";
-      // Fallback after 2 seconds
-      setTimeout(function() {
-        window.location.href = "https://telegram.org/dl";
-      }, 2000);
+    document.getElementById('fallback').addEventListener('click', function() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.includes("iphone") || ua.includes("ipad")) {
+        window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
+      } else {
+        window.location.href = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
+      }
     });
   </script>
 </body>
