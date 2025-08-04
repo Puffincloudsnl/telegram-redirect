@@ -2,65 +2,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join Telegram Group</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puffin Clouds – Telegram</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: sans-serif;
+      background: linear-gradient(to bottom, #f2ecfa, #eae2f8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding-top: 100px;
-      background: url('logo.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      text-shadow: 0 0 5px black;
     }
-    .container {
-      background-color: rgba(0, 0, 0, 0.6);
-      display: inline-block;
-      padding: 30px;
+    img.logo {
+      max-width: 80%%;
+      max-height: 300px;
+      margin-top: 60px;
       border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .button {
-      padding: 15px 30px;
-      font-size: 18px;
-      color: white;
-      background-color: #0088cc;
+    h1 {
+      margin: 30px 0 10px;
+      font-size: 28px;
+      color: #333;
+    }
+    p.description {
+      color: #555;
+      margin-bottom: 30px;
+      max-width: 90%%;
+    }
+    a.button {
+      display: block;
+      margin: 10px auto;
+      padding: 14px 30px;
+      font-size: 16px;
+      font-weight: bold;
       border-radius: 8px;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
+      width: 80%%;
+      max-width: 320px;
     }
-    .button:hover {
-      background-color: #0070a3;
+    a.join {
+      background-color: #7a45e5;
+      color: white;
+    }
+    a.download {
+      background-color: #444;
+      color: white;
     }
     .notice {
       margin-top: 20px;
-      font-size: 16px;
+      font-size: 14px;
+      color: #777;
+      max-width: 90%%;
     }
     .footer {
-      position: fixed;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: #ccc;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Join our Telegram group</h1>
-    <p class="notice">
-      This invitation link only works if the Telegram app is installed.<br />
-      <strong>Please install Telegram before clicking the button.</strong>
-    </p>
-    <a class="button" href="https://t.me/+2deIGn9wC0diN2I0">Join on Telegram</a>
-  </div>
+  <img src="logo.jpg" alt="Puffin Clouds" class="logo">
+  <h1>Puffin Clouds</h1>
+  <p class="description">Join our Telegram channel to stay up to date!</p>
+
+  <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">I have Telegram – Join</a>
+  <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
+
+  <p class="notice">
+    This invitation link only works if the Telegram app is installed.<br>
+    Please install Telegram before clicking the join button.
+  </p>
 
   <div class="footer">
-    🌐 🇬🇧 EN | 🇵🇱 PL
+    🌐 We speak English 🇬🇧 and Polish 🇵🇱
   </div>
 </body>
 </html>
