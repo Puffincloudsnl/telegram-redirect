@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dołącz do Puffin Clouds</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f8f4ff, #dcd3ea);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      text-align: center;
+    }
+    img {
+      width: 180px;
+      margin-top: 40px;
+    }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      color: #333;
+    }
+    p {
+      color: #555;
+      max-width: 300px;
+    }
+    .btn {
+      display: block;
+      width: 260px;
+      padding: 15px;
+      margin: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #5b3cc4;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .btn.secondary {
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Puffin Clouds Logo"/>
+  <h1>Puffin Clouds</h1>
+  <p>Dołącz do naszego kanału Telegram, aby być na bieżąco!</p>
+  <a class="btn" href="tg://join?invite=2deIGn9wC0diN2I0">Mam Telegram – Dołącz</a>
+  <a class="btn secondary" id="fallback">Nie mam Telegrama – Pobierz</a>
+
+  <script>
+    document.getElementById('fallback').addEventListener('click', function() {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.includes("iphone") || ua.includes("ipad")) {
+        window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
+      } else {
+        window.location.href = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
+      }
+    });
+  </script>
+</body>
+</html>
