@@ -11,8 +11,8 @@
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
       height: 100%;
-      background: #ece9f0 url('logo-bg.png') no-repeat center center;
-      background-size: contain;
+      background: #ece9f0 url('logo-bg.png') no-repeat center center fixed;
+      background-size: cover; /* mobile override below ensures full logo */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -68,7 +68,29 @@
       margin-top: 25px;
       color: #555;
     }
-  </style>
+  
+/* --- Mobile-only fixes: show the full logo without cropping and keep it reasonably sized --- */
+@media (max-width: 768px) {
+  html, body {
+    /* Place logo at the top center and size it based on viewport width so it never gets cropped */
+    background-position: top center !important;
+    background-size: clamp(240px, 85vw, 520px) !important; /* full logo visible, not too big */
+    background-attachment: scroll !important; /* override 'fixed' on mobile */
+  }
+  body {
+    /* Avoid vertical centering so content can sit below the logo */
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+  .card, .overlay {
+    /* Push content below the logo area; scales with viewport width */
+    margin: clamp(16px, 48vw, 320px) 12px 24px !important;
+    width: min(92vw, 420px) !important;
+    padding: 24px 18px !important;
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="card">
