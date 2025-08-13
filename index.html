@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Puffin Clouds – Telegram Invite</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      height: 100%;
+      min-height: 100%;
       background: #ece9f0 url('logo-bg.png') no-repeat center center fixed;
-      background-size: cover; /* mobile override below ensures full logo */
+      background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -29,89 +28,40 @@
       width: 90%;
       color: #333;
     }
-    h1 {
-      margin-top: 0;
-      font-size: 28px;
-    }
-    p {
-      font-size: 15px;
-      margin: 10px 0 20px;
-    }
+    h1 { margin-top: 0; font-size: 28px; }
+    p { font-size: 15px; margin: 10px 0 20px; }
     a.button {
-      display: block;
-      margin: 10px auto;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      color: white;
-      width: 80%;
-      max-width: 300px;
+      display: block; margin: 10px auto; padding: 14px 28px;
+      border-radius: 12px; font-size: 16px; font-weight: bold;
+      text-decoration: none; color: white; width: 80%; max-width: 300px;
       transition: 0.3s ease;
     }
-    a.download {
-      background: #333;
+    a.download { background: #333; }
+    a.download:hover { background: #111; }
+    a.join { background: #7a45e5; font-size: 18px; }
+    a.join:hover { background: #5e36c5; }
+    .footer { font-size: 12px; margin-top: 25px; color: #555; }
+    @media (max-width: 768px) {
+      html, body {
+        background: #ece9f0 url('logo-bg.png') no-repeat top center;
+        background-size: contain !important;
+        background-attachment: scroll !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+      }
+      body {
+        padding-top: clamp(320px, 92vw, 620px) !important;
+      }
+      .card {
+        margin: 12px auto 24px !important;
+        width: min(92vw, 420px) !important;
+        padding: 24px 18px !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255,255,255,0.88) !important;
+      }
     }
-    a.download:hover {
-      background: #111;
-    }
-    a.join {
-      background: #7a45e5;
-      font-size: 18px;
-    }
-    a.join:hover {
-      background: #5e36c5;
-    }
-    .footer {
-      font-size: 12px;
-      margin-top: 25px;
-      color: #555;
-    }
-  
-/* --- Mobile-only fixes: show the full logo without cropping and keep it reasonably sized --- */
-@media (max-width: 768px) {
-  html, body {
-    /* Place logo at the top center and size it based on viewport width so it never gets cropped */
-    background-position: top center !important;
-    background-size: clamp(240px, 85vw, 520px) !important; /* full logo visible, not too big */
-    background-attachment: scroll !important; /* override 'fixed' on mobile */
-  }
-  body {
-    /* Avoid vertical centering so content can sit below the logo */
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-  }
-  .card, .overlay {
-    /* Push content below the logo area; scales with viewport width */
-    margin: clamp(16px, 48vw, 320px) 12px 24px !important;
-    width: min(92vw, 420px) !important;
-    padding: 24px 18px !important;
-  }
-}
-
-
-/* --- Mobile-only fix: prevent blur over logo and position card below logo --- */
-@media (max-width: 768px) {
-  html, body {
-    background-position: top center !important;
-    background-size: clamp(240px, 85vw, 520px) !important;
-    background-attachment: scroll !important;
-  }
-  body {
-    padding-top: clamp(260px, 90vw, 540px) !important; /* push content below logo */
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-  }
-  .card, .overlay {
-    margin: 12px auto 24px !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: rgba(255,255,255,0.85) !important; /* solid bg without blur */
-  }
-}
-
-</style>
+  </style>
 </head>
 <body>
   <div class="card">
