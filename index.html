@@ -5,56 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Puffin Clouds – Telegram</title>
   <style>
-    /* Mobile-first layout */
     :root {
-      /* Reserve vertical space so content doesn't cover the centered logo.
-         Tweak middle value to push content lower/higher if needed. */
-      --gap-min: 260px;
-      --gap-vh: 46vh;
-      --gap-max: 560px;
+      --gap-min: 240px;
+      --gap-vh: 44vh;
+      --gap-max: 540px;
     }
     html, body {
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       min-height: 100vh;
-      /* Full logo as background, perfectly centered and fully visible */
-      background: #ece9f0 url('logo-bg.png') no-repeat center center;
+      background: #ece9f0 url('logo-bg.webp') no-repeat center center; /* fallback: logo-bg.png */
       background-size: contain;
-      background-attachment: scroll; /* better on mobile */
+      background-attachment: scroll;
     }
-
-    /* Front puffin – fixed at the very top, always visible */
-    .puffin-front {
-      position: fixed;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(42vw, 420px);
-      max-width: 420px;
-      z-index: 10;
-      pointer-events: none; /* avoid blocking taps */
-    }
-
-    /* Content card */
     .overlay {
       position: relative;
-      z-index: 20;
-      background: rgba(255,255,255,0.25);  /* translucent so background logo remains visible */
+      background: rgba(255,255,255,0.25);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       width: 100%;
       max-width: 600px;
-      padding: 20px;
-      margin: clamp(var(--gap-min), var(--gap-vh), var(--gap-max)) 16px 24px;
+      padding: 18px 16px 22px;
+      margin: clamp(var(--gap-min), var(--gap-vh), var(--gap-max)) 14px 24px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
       text-align: center;
       color: #222;
     }
-
-    h1 { font-size: 28px; margin: 0 0 10px; }
-    p.description { color: #555; margin-bottom: 24px; }
+    h1 { margin: 6px 0 8px; font-size: 28px; }
+    .logo-inline {
+      display: block;
+      width: min(78vw, 540px);
+      margin: 4px auto 10px;
+      height: auto;
+    }
+    p.description { color: #555; margin-bottom: 20px; }
     a.button {
       display: block;
       margin: 10px auto;
@@ -69,22 +55,21 @@
     }
     a.download { background-color: #444; }
     a.join { background-color: #7a45e5; font-size: 20px; padding: 18px 36px; }
-    .notice { font-size: 14px; color: #666; margin-top: 14px; }
-    .footer { margin-top: 24px; font-size: 13px; color: #666; }
+    .notice { font-size: 14px; color: #666; margin-top: 12px; }
+    .footer { margin-top: 20px; font-size: 13px; color: #666; }
 
-    /* Optional desktop fallback */
+    /* Desktop fallback */
     @media (min-width: 769px) {
-      .overlay { margin-left: auto; margin-right: auto; }
-      .puffin-front { width: 380px; }
+      .overlay { margin-left:auto; margin-right:auto; }
     }
   </style>
 </head>
 <body>
-  <!-- Fixed puffin at the top -->
-  <img class="puffin-front" src="puffin-front.png" alt="Puffin" />
-
   <div class="overlay">
     <h1>Puffin Clouds</h1>
+    <!-- Dodatkowe logo pod nazwą -->
+    <img class="logo-inline" src="logo-inline.png" alt="Puffin Clouds logo" />
+
     <p class="description">Join our Telegram channel to stay up to date!</p>
 
     <p><strong>If you don’t have Telegram yet:</strong></p>
