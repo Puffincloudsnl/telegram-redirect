@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Puffin Clouds – Telegram</title>
-  <style>
-    :root {
-      --bg-fit: cover; /* use 'cover' to fill; change to 'contain' if you prefer full logo visible */
-    }
-    html, body {
-      margin: 0; padding: 0;
-      height: 100svh; overflow: hidden;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: #ece9f0 url('background.webp') no-repeat center center / var(--bg-fit);
-    }
-    .screen { position: relative; width:100%; height:100%; }
-    /* Puffin like in logo (no legs), fixed at the very top */
-    .puffin-front {
-      position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
-      width: min(42vw, 420px); max-width: 420px; z-index: 10; pointer-events: none;
-    }
-    .overlay {
-      position: absolute; inset: 0;
-      display: grid; place-items: center;
-    }
-    .card {
-      width: min(92vw, 560px);
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.12);
-      padding: 18px 16px 22px; text-align: center; color:#222;
-      margin-top: 8vh;
-    }
-    h1 { margin: 6px 0 10px; font-size: 28px; }
-    p.description { color:#555; margin: 8px 0 18px; }
-    .button {
-      display:block; width:min(86vw,340px); margin:10px auto; padding:14px 18px;
-      border-radius:10px; font-weight:700; font-size:16px; text-decoration:none; color:#fff;
-    }
-    .download { background:#3a3a3a; }
-    .join { background:#7a45e5; font-size:18px; }
-    .footer { margin-top:14px; font-size:12px; color:#666; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Puffin Clouds – Telegram</title>
+<style>
+
+:root {
+  --bg-fit: cover;
+}
+html, body {
+  margin: 0; padding: 0;
+  height: 100svh; overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #ece9f0 url('background.webp') no-repeat center center / var(--bg-fit);
+}
+.screen { position: relative; width:100%; height:100%; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; }
+.card {
+  width: min(92vw, 560px);
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.12);
+  padding: 18px 16px 22px; text-align: center; color:#222;
+}
+p.description { color:#555; margin: 8px 0 18px; }
+.button {
+  display:block; width:min(86vw,340px); margin:10px auto; padding:14px 18px;
+  border-radius:10px; font-weight:700; font-size:16px; text-decoration:none; color:#fff;
+}
+.download { background:#3a3a3a; }
+.join { background:#7a45e5; font-size:18px; }
+.footer { margin-top:14px; font-size:12px; color:#666; }
+
+.logo-full {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  width: min(64vw, 620px); max-width: 620px; z-index: 10; pointer-events: none;
+}
+.card { margin-top: 22vh; }
+</style>
 </head>
 <body>
-  <div class="screen">
-    <img class="puffin-front" src="puffin-front.png" alt="Puffin" />
-    <div class="overlay">
-      <div class="card">
-        <h1>Puffin Clouds</h1>
-        <p class="description">Join our Telegram channel to stay up to date!</p>
-        <p><strong>If you don’t have Telegram yet:</strong></p>
-        <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
-        <p><strong>Then, when it's installed:</strong></p>
-        <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">Join @PuffinClouds</a>
-        <div class="footer">
-          ⚠️ On iOS devices, private group invitations may not work correctly in the browser.<br/>
-          🌐 We speak English 🇬🇧 and Polish 🇵🇱
-        </div>
+<div class="screen">
+  <img class="logo-full" src="logo-full.png" alt="Puffin Clouds logo" />
+  <div class="overlay">
+    <div class="card">
+      <p class="description">Join our Telegram channel to stay up to date!</p>
+      <p><strong>If you don’t have Telegram yet:</strong></p>
+      <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
+      <p><strong>Then, when it's installed:</strong></p>
+      <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">Join @PuffinClouds</a>
+      <div class="footer">
+        ⚠️ On iOS devices, private group invitations may not work correctly in the browser.<br/>
+        🌐 We speak English 🇬🇧 and Polish 🇵🇱
       </div>
     </div>
   </div>
+</div>
 </body>
 </html>
