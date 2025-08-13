@@ -2,53 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Puffin Clouds – Telegram</title>
   <style>
-    /* Mobile-first: centered logo as subtle blurred background */
+    /* Mobile-first layout */
     :root {
-      --card-gap-min: 260px;
-      --card-gap-vh: 46vh;
-      --card-gap-max: 560px;
+      /* Reserve vertical space so content doesn't cover the centered logo.
+         Tweak middle value to push content lower/higher if needed. */
+      --gap-min: 260px;
+      --gap-vh: 46vh;
+      --gap-max: 560px;
     }
     html, body {
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       min-height: 100vh;
+      /* Full logo as background, perfectly centered and fully visible */
       background: #ece9f0 url('logo-bg.png') no-repeat center center;
       background-size: contain;
-      background-attachment: scroll;
+      background-attachment: scroll; /* better on mobile */
     }
-    /* Front puffin above the content */
+
+    /* Front puffin – fixed at the very top, always visible */
     .puffin-front {
       position: fixed;
+      top: 12px;
       left: 50%;
-      top: calc(50vh - 12px); /* aligns around the visual center */
-      transform: translate(-50%, -50%);
-      width: min(60vw, 520px);
-      max-width: 520px;
-      z-index: 5;
-      pointer-events: none; /* no accidental taps */
+      transform: translateX(-50%);
+      width: min(42vw, 420px);
+      max-width: 420px;
+      z-index: 10;
+      pointer-events: none; /* avoid blocking taps */
     }
+
     /* Content card */
     .overlay {
       position: relative;
-      z-index: 10;
-      background: rgba(255,255,255,0.25); /* 25% transparent so background logo stays visible */
-      backdrop-filter: blur(6px);          /* adds readability */
+      z-index: 20;
+      background: rgba(255,255,255,0.25);  /* translucent so background logo remains visible */
+      backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       width: 100%;
       max-width: 600px;
       padding: 20px;
-      margin: clamp(var(--card-gap-min), var(--card-gap-vh), var(--card-gap-max)) 16px 24px;
+      margin: clamp(var(--gap-min), var(--gap-vh), var(--gap-max)) 16px 24px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
       text-align: center;
       color: #222;
     }
-    h1 { font-size: 28px; margin: 0 0 8px; }
-    p.description { color: #555; margin-bottom: 22px; }
+
+    h1 { font-size: 28px; margin: 0 0 10px; }
+    p.description { color: #555; margin-bottom: 24px; }
     a.button {
       display: block;
       margin: 10px auto;
@@ -61,20 +67,20 @@
       max-width: 320px;
       color: #fff;
     }
-    a.join { background-color: #7a45e5; font-size: 20px; padding: 18px 36px; }
     a.download { background-color: #444; }
+    a.join { background-color: #7a45e5; font-size: 20px; padding: 18px 36px; }
     .notice { font-size: 14px; color: #666; margin-top: 14px; }
     .footer { margin-top: 24px; font-size: 13px; color: #666; }
 
-    /* Desktop fallback (in case someone opens it) */
-    @media (min-width: 769px){
-      .overlay { margin-left:auto; margin-right:auto; }
-      .puffin-front { width: 420px; top: 46vh; }
+    /* Optional desktop fallback */
+    @media (min-width: 769px) {
+      .overlay { margin-left: auto; margin-right: auto; }
+      .puffin-front { width: 380px; }
     }
   </style>
 </head>
 <body>
-  <!-- Front puffin on top of the blurred background -->
+  <!-- Fixed puffin at the top -->
   <img class="puffin-front" src="puffin-front.png" alt="Puffin" />
 
   <div class="overlay">
