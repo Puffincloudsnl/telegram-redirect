@@ -34,18 +34,19 @@ p.description { color:#555; margin: 8px 0 18px; }
 .join { background:#7a45e5; font-size:18px; }
 .footer { margin-top:14px; font-size:12px; color:#666; }
 
-.logo-full {
-  position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
-  width: min(64vw, 620px); max-width: 620px; z-index: 10; pointer-events: none;
+.logo-full-inline {
+  display: block;
+  width: min(78vw, 540px);
+  margin: 0 auto 10px;
+  height: auto;
 }
-.card { margin-top: 22vh; }
 </style>
 </head>
 <body>
 <div class="screen">
-  <img class="logo-full" src="logo-full.png" alt="Puffin Clouds logo" />
   <div class="overlay">
     <div class="card">
+      <img class="logo-full-inline" src="logo-full.png" alt="Puffin Clouds logo" />
       <p class="description">Join our Telegram channel to stay up to date!</p>
       <p><strong>If you don’t have Telegram yet:</strong></p>
       <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
