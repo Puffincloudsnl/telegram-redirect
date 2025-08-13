@@ -6,85 +6,80 @@
   <title>Puffin Clouds – Telegram</title>
   <style>
     :root {
-      --gap-min: 240px;
-      --gap-vh: 44vh;
-      --gap-max: 540px;
+      /* change to 'cover' if wolisz wypełnienie całego ekranu */
+      --bg-fit: contain; 
+      --card-width: min(92vw, 560px);
     }
+    /* brak przewijania */
     html, body {
       margin: 0;
       padding: 0;
+      height: 100svh;           /* pełny ekran na mobile (pomija paski) */
+      overflow: hidden;         /* blokada scrolla */
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      min-height: 100vh;
-      background: #ece9f0 url('logo-bg.webp') no-repeat center center; /* fallback: logo-bg.png */
-      background-size: contain;
-      background-attachment: scroll;
+      background: #ece9f0 url('logo-bg.webp') no-repeat center center / var(--bg-fit);
+      touch-action: none;       /* dodatkowa blokada przewijania gestem */
+    }
+    /* kontener wyrównany na środku ekranu */
+    .screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;      /* środek ekranu */
     }
     .overlay {
-      position: relative;
+      width: var(--card-width);
       background: rgba(255,255,255,0.25);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      width: 100%;
-      max-width: 600px;
-      padding: 18px 16px 22px;
-      margin: clamp(var(--gap-min), var(--gap-vh), var(--gap-max)) 14px 24px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
-      text-align: center;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.12);
       color: #222;
+      text-align: center;
+      padding: 18px 16px 22px;
     }
-    h1 { margin: 6px 0 8px; font-size: 28px; }
+    h1 { margin: 6px 0 10px; font-size: 28px; }
     .logo-inline {
       display: block;
-      width: min(78vw, 540px);
-      margin: 4px auto 10px;
+      width: min(78vw, 520px);
       height: auto;
+      margin: 4px auto 10px;
     }
-    p.description { color: #555; margin-bottom: 20px; }
-    a.button {
+    p.description { color:#555; margin: 8px 0 18px; }
+    .button {
       display: block;
+      width: min(86vw, 340px);
       margin: 10px auto;
-      padding: 14px 30px;
-      font-size: 16px;
+      padding: 14px 18px;
+      border-radius: 10px;
       font-weight: 700;
-      border-radius: 8px;
+      font-size: 16px;
       text-decoration: none;
-      width: 80%;
-      max-width: 320px;
       color: #fff;
     }
-    a.download { background-color: #444; }
-    a.join { background-color: #7a45e5; font-size: 20px; padding: 18px 36px; }
-    .notice { font-size: 14px; color: #666; margin-top: 12px; }
-    .footer { margin-top: 20px; font-size: 13px; color: #666; }
-
-    /* Desktop fallback */
-    @media (min-width: 769px) {
-      .overlay { margin-left:auto; margin-right:auto; }
-    }
+    .download { background:#3a3a3a; }
+    .join { background:#7a45e5; font-size: 18px; }
+    .footer { margin-top: 14px; font-size:12px; color:#666; }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <h1>Puffin Clouds</h1>
-    <!-- Dodatkowe logo pod nazwą -->
-    <img class="logo-inline" src="logo-inline.png" alt="Puffin Clouds logo" />
+  <div class="screen">
+    <div class="overlay">
+      <h1>Puffin Clouds</h1>
+      <img class="logo-inline" src="logo-inline.png" alt="Puffin Clouds logo" />
+      <p class="description">Join our Telegram channel to stay up to date!</p>
 
-    <p class="description">Join our Telegram channel to stay up to date!</p>
+      <p><strong>If you don’t have Telegram yet:</strong></p>
+      <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
 
-    <p><strong>If you don’t have Telegram yet:</strong></p>
-    <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
+      <p><strong>Then, when it's installed:</strong></p>
+      <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">Join @PuffinClouds</a>
 
-    <p><strong>Then, when it's installed:</strong></p>
-    <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">Join @PuffinClouds</a>
-
-    <p class="notice">
-      This invitation link only works if the Telegram app is installed.
-    </p>
-
-    <div class="footer">
-      ⚠️ On iOS devices, private group invitations may not work correctly in the browser.<br/>
-      🌐 We speak English 🇬🇧 and Polish 🇵🇱
+      <div class="footer">
+        ⚠️ On iOS devices, private group invitations may not work correctly in the browser.<br/>
+        🌐 We speak English 🇬🇧 and Polish 🇵🇱
+      </div>
     </div>
   </div>
 </body>
