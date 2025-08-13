@@ -90,6 +90,27 @@
   }
 }
 
+
+/* --- Mobile-only fix: prevent blur over logo and position card below logo --- */
+@media (max-width: 768px) {
+  html, body {
+    background-position: top center !important;
+    background-size: clamp(240px, 85vw, 520px) !important;
+    background-attachment: scroll !important;
+  }
+  body {
+    padding-top: clamp(260px, 90vw, 540px) !important; /* push content below logo */
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .card, .overlay {
+    margin: 12px auto 24px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255,255,255,0.85) !important; /* solid bg without blur */
+  }
+}
+
 </style>
 </head>
 <body>
