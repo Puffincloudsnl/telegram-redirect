@@ -7,13 +7,11 @@
   <meta name="color-scheme" content="light only" />
   <style>
     :root {
-      --logo-vw: 44vw;           /* bigger top logo */
-      --logo-max: 460px;
-      --halo-vw: 50vw;
+      --logo-vw: 40vw;
+      --logo-max: 420px;
+      --halo-vw: 46vw;
       --card-w:  min(92vw, 560px);
-      --brand-top: rgb(104, 104, 104);
-      --brand-bottom: rgb(96, 93, 103);
-      --brand-stroke: rgb(57, 55, 61);
+      --brand: #7a45e5;
     }
     html, body {
       margin: 0; padding: 0;
@@ -23,38 +21,28 @@
       -webkit-tap-highlight-color: transparent;
     }
     .screen { position: relative; width:100%; height:100%; }
-    .logo-halo {
-      position: fixed; top: 6px; left: 50%; transform: translateX(-50%);
-      width: min(var(--halo-vw), calc(var(--logo-max) * 1.0));
-      z-index: 5; opacity: .32; pointer-events: none; filter: blur(1.6px);
+    .logo-halo { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); width: min(var(--halo-vw), calc(var(--logo-max) * 0.96)); z-index: 5; opacity: .32; pointer-events: none; filter: blur(1.6px); }
+    .logo-full { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: min(var(--logo-vw), var(--logo-max)); z-index: 10; pointer-events: none; filter: drop-shadow(0 6px 14px rgba(0,0,0,.16)); }
+
+    .overlay { position: absolute; inset: 0; display: grid; place-items: center; padding-top: 16vh; }
+    .card { width: var(--card-w); background: rgba(255,255,255,0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,.16); text-align: center; color: #1f1f1f; padding: 18px 14px 20px; position: relative; }
+
+    /* Language toggle button */
+    .lang-toggle {
+      position: absolute; top: 10px; right: 10px;
+      border: 0; background: rgba(0,0,0,.65); color: #fff; font-weight: 700;
+      padding: 8px 10px; border-radius: 10px; font-size: 14px; line-height: 1;
     }
-    .logo-full {
-      position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-      width: min(var(--logo-vw), var(--logo-max));
-      z-index: 10; pointer-events: none;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.16));
-    }
-    .overlay { position: absolute; inset: 0; display: grid; place-items: center; padding-top: 15vh; }
-    .card {
-      width: var(--card-w);
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,.16);
-      text-align: center; color: #1f1f1f; padding: 18px 14px 20px;
-    }
-    .logo-text-wrap { width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
-    .logo-text-wrap svg { width: min(84vw, 540px); height: auto; display: block; }
-    p.description { color:#555a61; margin: 0 0 14px; }
-    .button {
-      display:block; width:min(86vw, 340px);
-      margin: 10px auto; padding: 13px 16px;
-      border-radius: 12px; font-weight: 800; font-size: 16px;
-      text-decoration:none; color:#fff;
-      transition: transform .08s ease-in-out;
-    }
+
+    .brandline { display:flex; justify-content:center; margin: 2px 0 10px; }
+    .brandline img { width: min(82vw, 520px); height:auto; display:block; }
+
+    .button { display:block; width:min(86vw, 340px); margin: 10px auto; padding: 13px 16px; border-radius: 12px; font-weight: 800; font-size: 16px; text-decoration:none; color:#fff; transition: transform .08s ease-in-out; }
     .button:active { transform: scale(0.98); }
     .download { background:#2f2f33; }
-    .join { background:#7a45e5; font-size:18px; }
+    .join { background: var(--brand); font-size:18px; }
+
+    .muted { color:#555a61; }
     .footer { margin-top:10px; font-size:12px; color:#5e5e68; }
   </style>
 </head>
@@ -64,38 +52,66 @@
     <img class="logo-full" src="logo-full.png" alt="Puffin Clouds logo" />
     <div class="overlay">
       <div class="card">
-        <div class="logo-text-wrap" aria-hidden="true">
-          <svg viewBox="0 0 1200 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Puffin Clouds">
-            <defs>
-              <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="var(--brand-top)"/>
-                <stop offset="100%" stop-color="var(--brand-bottom)"/>
-              </linearGradient>
-              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="rgba(0,0,0,0.24)"/>
-              </filter>
-            </defs>
-            <g filter="url(#shadow)">
-              <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle"
-                    font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
-                    font-weight="800" font-size="168"
-                    fill="url(#grad)" stroke="var(--brand-stroke)" stroke-width="3.6" paint-order="stroke">
-                Puffin Clouds
-              </text>
-            </g>
-          </svg>
-        </div>
-        <p class="description">Join our Telegram channel to stay up to date!</p>
-        <p><strong>If you don’t have Telegram yet:</strong></p>
-        <a class="button download" href="https://telegram.org/dl">Download Telegram</a>
-        <p><strong>Then, when it's installed:</strong></p>
-        <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0">Join @PuffinClouds</a>
+        <button class="lang-toggle" id="langBtn" aria-label="Change language">PL</button>
+
+        <div class="brandline"><img src="logo-text-inline.png" alt="Puffin Clouds" /></div>
+
+        <p class="muted" data-i18n="desc">Join our Telegram channel to stay up to date!</p>
+
+        <p><strong data-i18n="ifNoTg">If you don’t have Telegram yet:</strong></p>
+        <a class="button download" href="https://telegram.org/dl" data-i18n="download">Download Telegram</a>
+
+        <p><strong data-i18n="then">Then, when it's installed:</strong></p>
+        <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0" data-i18n="join">Join @PuffinClouds</a>
+
         <div class="footer">
-          ⚠️ On iOS devices, private group invitations may not work correctly in the browser.<br/>
-          🌐 We speak English 🇬🇧 and Polish 🇵🇱
+          <span data-i18n="warn">On iOS devices, private group invitations may not work correctly in the browser.</span><br/>
+          <span data-i18n="speak">We speak English 🇬🇧 and Polish 🇵🇱</span>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    const strings = {
+      en: {
+        desc: "Join our Telegram channel to stay up to date!",
+        ifNoTg: "If you don’t have Telegram yet:",
+        download: "Download Telegram",
+        then: "Then, when it's installed:",
+        join: "Join @PuffinClouds",
+        warn: "On iOS devices, private group invitations may not work correctly in the browser.",
+        speak: "We speak English 🇬🇧 and Polish 🇵🇱"
+      },
+      pl: {
+        desc: "Dołącz do naszego kanału Telegram, aby być na bieżąco!",
+        ifNoTg: "Jeśli jeszcze nie masz Telegrama:",
+        download: "Pobierz Telegram",
+        then: "Następnie, gdy będzie zainstalowany:",
+        join: "Dołącz do @PuffinClouds",
+        warn: "Na urządzeniach iOS prywatne zaproszenia do grup mogą nie działać poprawnie w przeglądarce.",
+        speak: "Mówimy po angielsku 🇬🇧 i po polsku 🇵🇱"
+      }
+    };
+
+    let lang = 'en';
+    const btn = document.getElementById('langBtn');
+
+    function applyLanguage() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = strings[lang][key];
+      });
+      btn.textContent = (lang === 'en') ? 'PL' : 'EN';
+      document.documentElement.lang = lang;
+    }
+
+    btn.addEventListener('click', () => {
+      lang = (lang === 'en') ? 'pl' : 'en';
+      applyLanguage();
+    });
+
+    applyLanguage();
+  </script>
 </body>
 </html>
