@@ -7,7 +7,7 @@
   <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --logo-vw:40vw; --logo-max:420px; --halo-vw:46vw;
+      --logo-vw:46vw; --logo-max:480px; --halo-vw:46vw;
       --card-w:min(92vw,560px); --brand:#7a45e5
     }
     html,body{
@@ -15,11 +15,11 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:#ece9f0 url('background.webp') no-repeat center/cover
     }
-    .logo-wrap{position:fixed;inset:auto 0 0 0;top:0;display:grid;place-items:center;pointer-events:none;z-index:10;padding-top:2px}
-    .logo-halo{position:absolute;top:6px;width:min(var(--halo-vw),calc(var(--logo-max)*.98));opacity:.32;filter:blur(1.6px);z-index:5}
-    .logo-full{width:min(var(--logo-vw),var(--logo-max));filter:drop-shadow(0 6px 14px rgba(0,0,0,.16))}
-    .lang-toggle{position:fixed;top:10px;right:12px;z-index:20;display:inline-flex;gap:2px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:6px;box-shadow:0 4px 10px rgba(0,0,0,.12)}
-    .lang-toggle button{border:0;background:transparent;color:#232326;padding:8px 10px;border-radius:999px;font-weight:800;font-size:13px;line-height:1;min-width:64px;cursor:pointer}
+    .logo-wrap{position:fixed;top:0;left:50%;transform:translateX(-50%);pointer-events:none;z-index:10;padding-top:0;}
+    .logo-halo{z-index:40;position:absolute;top:6px;width:min(var(--halo-vw),calc(var(--logo-max)*.98));opacity:.32;filter:blur(1.6px);z-index:5}
+    .logo-full{margin-top:0;z-index:50;z-index:50;width:min(var(--logo-vw),var(--logo-max));filter:drop-shadow(0 6px 14px rgba(0,0,0,.16))}
+    .lang-toggle{position:fixed;top:20px;right:16px;right:12px;z-index:20;display:inline-flex;gap:2px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:6px;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+    .lang-toggle button{font-size:12px;padding:6px 8px;min-width:54px;border:0;background:transparent;color:#232326;padding:8px 10px;border-radius:999px;font-weight:800;font-size:13px;line-height:1;min-width:64px;cursor:pointer}
     .lang-toggle .active{background:var(--brand);color:#fff}
     .overlay{position:absolute;inset:0;display:grid;place-items:center;padding-top:16vh}
     .card{width:var(--card-w);background:rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.16);text-align:center;color:#1f1f1f;padding:18px 14px 20px}
