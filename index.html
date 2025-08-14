@@ -6,19 +6,18 @@
   <title>Puffin Clouds – Telegram</title>
   <style>
     :root {
-      --logo-vw: 46vw;            /* reasonable size */
+      --logo-vw: 46vw;
       --logo-max: 500px;
       --halo-vw: 52vw;
       --card-w:  min(92vw, 560px);
     }
     html, body {
       margin: 0; padding: 0;
-      height: 100svh; overflow: hidden;  /* no scroll */
+      height: 100svh; overflow: hidden;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: #ece9f0 url('background.webp') no-repeat center center / cover;
     }
     .screen { position: relative; width:100%; height:100%; }
-
     .logo-halo {
       position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
       width: min(var(--halo-vw), calc(var(--logo-max) * 1.06));
@@ -32,7 +31,7 @@
     }
     .overlay {
       position: absolute; inset: 0; display: grid; place-items: center;
-      padding-top: 18vh; /* keep card well below logo */
+      padding-top: 18vh;
     }
     .card {
       width: var(--card-w);
