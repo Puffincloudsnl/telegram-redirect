@@ -12,6 +12,10 @@
       --halo-vw: 46vw;
       --card-w:  min(92vw, 560px);
       --brand: #7a45e5;
+      --pill-bg: rgba(255,255,255,.85);
+      --pill-border: rgba(0,0,0,.15);
+      --pill-active: #7a45e5;
+      --pill-text: #232326;
     }
     html, body {
       margin: 0; padding: 0;
@@ -24,15 +28,29 @@
     .logo-halo { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); width: min(var(--halo-vw), calc(var(--logo-max) * 0.96)); z-index: 5; opacity: .32; pointer-events: none; filter: blur(1.6px); }
     .logo-full { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: min(var(--logo-vw), var(--logo-max)); z-index: 10; pointer-events: none; filter: drop-shadow(0 6px 14px rgba(0,0,0,.16)); }
 
+    /* ULTRA VISIBLE language toggle — fixed at top-right */
+    .lang-toggle {
+      position: fixed; top: 10px; right: 12px; z-index: 20;
+      display: inline-flex; align-items: center; gap: 2px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      border-radius: 999px;
+      padding: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+      user-select: none;
+    }
+    .lang-toggle button {
+      border: 0; background: transparent; color: var(--pill-text);
+      padding: 8px 10px; border-radius: 999px; font-weight: 800;
+      font-size: 13px; line-height: 1; cursor: pointer; min-width: 64px;
+    }
+    .lang-toggle button.active {
+      background: var(--pill-active); color: #fff;
+    }
+    .lang-toggle .sep { width: 1px; height: 18px; background: var(--pill-border); margin: 0 2px; border-radius: 1px; }
+
     .overlay { position: absolute; inset: 0; display: grid; place-items: center; padding-top: 16vh; }
     .card { width: var(--card-w); background: rgba(255,255,255,0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,.16); text-align: center; color: #1f1f1f; padding: 18px 14px 20px; position: relative; }
-
-    /* Language toggle button */
-    .lang-toggle {
-      position: absolute; top: 10px; right: 10px;
-      border: 0; background: rgba(0,0,0,.65); color: #fff; font-weight: 700;
-      padding: 8px 10px; border-radius: 10px; font-size: 14px; line-height: 1;
-    }
 
     .brandline { display:flex; justify-content:center; margin: 2px 0 10px; }
     .brandline img { width: min(82vw, 520px); height:auto; display:block; }
@@ -47,13 +65,18 @@
   </style>
 </head>
 <body>
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button id="btnEN" class="active" aria-pressed="true">🇬🇧 EN</button>
+    <div class="sep" aria-hidden="true"></div>
+    <button id="btnPL" aria-pressed="false">🇵🇱 PL</button>
+  </div>
+
   <div class="screen">
     <img class="logo-halo" src="logo-halo.png" alt="" />
     <img class="logo-full" src="logo-full.png" alt="Puffin Clouds logo" />
     <div class="overlay">
       <div class="card">
-        <button class="lang-toggle" id="langBtn" aria-label="Change language">PL</button>
-
         <div class="brandline"><img src="logo-text-inline.png" alt="Puffin Clouds" /></div>
 
         <p class="muted" data-i18n="desc">Join our Telegram channel to stay up to date!</p>
@@ -95,22 +118,30 @@
     };
 
     let lang = 'en';
-    const btn = document.getElementById('langBtn');
+    const els = document.querySelectorAll('[data-i18n]');
+    const btnEN = document.getElementById('btnEN');
+    const btnPL = document.getElementById('btnPL');
 
     function applyLanguage() {
-      document.querySelectorAll('[data-i18n]').forEach(el => {
+      els.forEach(el => {
         const key = el.getAttribute('data-i18n');
         el.textContent = strings[lang][key];
       });
-      btn.textContent = (lang === 'en') ? 'PL' : 'EN';
       document.documentElement.lang = lang;
+      const isEN = lang === 'en';
+      btnEN.classList.toggle('active', isEN);
+      btnEN.setAttribute('aria-pressed', isEN.toString());
+      btnPL.classList.toggle('active', !isEN);
+      btnPL.setAttribute('aria-pressed', (!isEN).toString());
+      localStorage.setItem('puffin_lang', lang);
     }
 
-    btn.addEventListener('click', () => {
-      lang = (lang === 'en') ? 'pl' : 'en';
-      applyLanguage();
-    });
+    btnEN.addEventListener('click', () => { lang = 'en'; applyLanguage(); });
+    btnPL.addEventListener('click', () => { lang = 'pl'; applyLanguage(); });
 
+    // restore last choice
+    const saved = localStorage.getItem('puffin_lang');
+    if (saved === 'pl' || saved === 'en') lang = saved;
     applyLanguage();
   </script>
 </body>
