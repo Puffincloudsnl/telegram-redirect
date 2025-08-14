@@ -6,173 +6,74 @@
   <title>Puffin Clouds – Telegram</title>
   <meta name="color-scheme" content="light only" />
   <style>
-    :root {
-      --logo-vw: 40vw;
-      --logo-max: 420px;
-      --halo-vw: 46vw;
-      --card-w:  min(92vw, 560px);
-      --brand: #7a45e5;
+    :root{
+      --logo-vw:40vw; --logo-max:420px; --halo-vw:46vw;
+      --card-w:min(92vw,560px); --brand:#7a45e5
     }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      height: 100svh; overflow: hidden;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: #ece9f0 url('background.webp') no-repeat center center / cover;
-      -webkit-tap-highlight-color: transparent;
+    html,body{
+      margin:0;padding:0;height:100svh;overflow:hidden;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:#ece9f0 url('background.webp') no-repeat center/cover
     }
-    .screen { position: relative; width:100%; height:100%; }
-
-    /* Robust centering for top logo */
-    .logo-wrap {
-      position: fixed; top: 0; left: 0; right: 0;
-      display: grid; place-items: center;
-      pointer-events: none; z-index: 10; padding-top: 2px;
-    }
-    .logo-halo {
-      position: absolute; top: 6px;
-      width: min(var(--halo-vw), calc(var(--logo-max) * 0.98));
-      opacity: .32; filter: blur(1.6px); z-index: 5;
-    }
-    .logo-full {
-      position: relative;
-      width: min(var(--logo-vw), var(--logo-max));
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.16));
-      z-index: 10;
-    }
-
-    /* Language toggle, fixed & visible */
-    .lang-toggle {
-      position: fixed; top: 10px; right: 12px; z-index: 20;
-      display: inline-flex; align-items: center; gap: 2px;
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(0,0,0,.15);
-      border-radius: 999px; padding: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,.12);
-    }
-    .lang-toggle button {
-      border: 0; background: transparent; color: #232326;
-      padding: 8px 10px; border-radius: 999px; font-weight: 800;
-      font-size: 13px; line-height: 1; min-width: 64px; cursor: pointer;
-    }
-    .lang-toggle button.active { background: var(--brand); color: #fff; }
-    .lang-toggle .sep { width: 1px; height: 18px; background: rgba(0,0,0,.15); margin: 0 2px; border-radius: 1px; }
-
-    .overlay { position: absolute; inset: 0; display: grid; place-items: center; padding-top: 16vh; }
-    .card {
-      width: var(--card-w);
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border-radius: 18px; box-shadow: 0 6px 24px rgba(0,0,0,.16);
-      text-align: center; color: #1f1f1f; padding: 18px 14px 20px; position: relative;
-    }
-
-    h1 {
-      margin: 0 0 8px; font-size: clamp(26px, 8vw, 42px);
-      letter-spacing: .2px; line-height: 1.15;
-      font-weight: 800; color: #2b2b2f;
-      text-shadow: 0 2px 4px rgba(0,0,0,.08);
-    }
-
-    p.description { color:#555a61; margin: 0 0 14px; }
-    .button {
-      display:block; width:min(86vw, 340px);
-      margin: 10px auto; padding: 13px 16px;
-      border-radius: 12px; font-weight: 800; font-size: 16px;
-      text-decoration:none; color:#fff; transition: transform .08s ease-in-out;
-    }
-    .button:active { transform: scale(0.98); }
-    .download { background:#2f2f33; }
-    .join { background: var(--brand); font-size:18px; }
-    .footer { margin-top:10px; font-size:12px; color:#5e5e68; }
+    .logo-wrap{position:fixed;inset:auto 0 0 0;top:0;display:grid;place-items:center;pointer-events:none;z-index:10;padding-top:2px}
+    .logo-halo{position:absolute;top:6px;width:min(var(--halo-vw),calc(var(--logo-max)*.98));opacity:.32;filter:blur(1.6px);z-index:5}
+    .logo-full{width:min(var(--logo-vw),var(--logo-max));filter:drop-shadow(0 6px 14px rgba(0,0,0,.16))}
+    .lang-toggle{position:fixed;top:10px;right:12px;z-index:20;display:inline-flex;gap:2px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:6px;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+    .lang-toggle button{border:0;background:transparent;color:#232326;padding:8px 10px;border-radius:999px;font-weight:800;font-size:13px;line-height:1;min-width:64px;cursor:pointer}
+    .lang-toggle .active{background:var(--brand);color:#fff}
+    .overlay{position:absolute;inset:0;display:grid;place-items:center;padding-top:16vh}
+    .card{width:var(--card-w);background:rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.16);text-align:center;color:#1f1f1f;padding:18px 14px 20px}
+    h1{margin:0 0 8px;font-size:clamp(26px,8vw,42px);font-weight:800;color:#2b2b2f;text-shadow:0 2px 4px rgba(0,0,0,.08)}
+    p{margin:0 0 14px}
+    .muted{color:#555a61}
+    .button{display:block;width:min(86vw,340px);margin:10px auto;padding:13px 16px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;color:#fff}
+    .download{background:#2f2f33}
+    .join{background:var(--brand);font-size:18px}
+    .footer{margin-top:10px;font-size:12px;color:#5e5e68}
   </style>
 </head>
 <body>
-  <!-- Language toggle -->
   <div class="lang-toggle" role="group" aria-label="Language">
     <button id="btnEN" class="active" aria-pressed="true">🇬🇧 EN</button>
-    <div class="sep" aria-hidden="true"></div>
     <button id="btnPL" aria-pressed="false">🇵🇱 PL</button>
   </div>
-
-  <!-- Top logo wrapper ensures perfect centering -->
   <div class="logo-wrap">
     <img class="logo-halo" src="logo-halo.png" alt="" />
     <img class="logo-full" src="logo-full.png" alt="Puffin Clouds logo" />
   </div>
-
-  <div class="screen">
-    <div class="overlay">
-      <div class="card">
-        <h1 data-i18n="title">Puffin Clouds</h1>
-
-        <p class="description" data-i18n="desc">Join our Telegram channel to stay up to date!</p>
-
-        <p><strong data-i18n="ifNoTg">If you don’t have Telegram yet:</strong></p>
-        <a class="button download" href="https://telegram.org/dl" data-i18n="download">Download Telegram</a>
-
-        <p><strong data-i18n="then">Then, when it's installed:</strong></p>
-        <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0" data-i18n="join">Join @PuffinClouds</a>
-
-        <div class="footer">
-          <span data-i18n="warn">On iOS devices, private group invitations may not work correctly in the browser.</span><br/>
-          <span data-i18n="speak">We speak English 🇬🇧 and Polish 🇵🇱</span>
-        </div>
+  <div class="overlay">
+    <div class="card">
+      <h1 data-i18n="title">Puffin Clouds</h1>
+      <p class="muted" data-i18n="desc">Join our Telegram channel to stay up to date!</p>
+      <p><strong data-i18n="ifNoTg">If you don’t have Telegram yet:</strong></p>
+      <a class="button download" href="https://telegram.org/dl" data-i18n="download">Download Telegram</a>
+      <p><strong data-i18n="then">Then, when it's installed:</strong></p>
+      <a class="button join" href="https://t.me/+2deIGn9wC0diN2I0" data-i18n="join">Join @PuffinClouds</a>
+      <div class="footer">
+        <span data-i18n="warn">On iOS devices, private group invitations may not work correctly in the browser.</span><br/>
+        <span data-i18n="speak">We speak English 🇬🇧 and Polish 🇵🇱</span>
       </div>
     </div>
   </div>
-
   <script>
-    // EN default
-    let lang = 'en';
+    let lang = localStorage.getItem('puffin_lang') || 'en';
     const strings = {
-      en: {
-        title: "Puffin Clouds",
-        desc: "Join our Telegram channel to stay up to date!",
-        ifNoTg: "If you don’t have Telegram yet:",
-        download: "Download Telegram",
-        then: "Then, when it's installed:",
-        join: "Join @PuffinClouds",
-        warn: "On iOS devices, private group invitations may not work correctly in the browser.",
-        speak: "We speak English 🇬🇧 and Polish 🇵🇱"
-      },
-      pl: {
-        title: "Puffin Clouds",
-        desc: "Dołącz do naszego kanału Telegram, aby być na bieżąco!",
-        ifNoTg: "Jeśli jeszcze nie masz Telegrama:",
-        download: "Pobierz Telegram",
-        then: "Następnie, gdy będzie zainstalowany:",
-        join: "Dołącz do @PuffinClouds",
-        warn: "Na urządzeniach iOS prywatne zaproszenia do grup mogą nie działać poprawnie w przeglądarce.",
-        speak: "Mówimy po angielsku 🇬🇧 i po polsku 🇵🇱"
-      }
+      en:{title:"Puffin Clouds",desc:"Join our Telegram channel to stay up to date!",ifNoTg:"If you don’t have Telegram yet:",download:"Download Telegram",then:"Then, when it's installed:",join:"Join @PuffinClouds",warn:"On iOS devices, private group invitations may not work correctly in the browser.",speak:"We speak English 🇬🇧 and Polish 🇵🇱"},
+      pl:{title:"Puffin Clouds",desc:"Dołącz do naszego kanału Telegram, aby być na bieżąco!",ifNoTg:"Jeśli jeszcze nie masz Telegrama:",download:"Pobierz Telegram",then:"Następnie, gdy będzie zainstalowany:",join:"Dołącz do @PuffinClouds",warn:"Na urządzeniach iOS prywatne zaproszenia do grup mogą nie działać poprawnie w przeglądarce.",speak:"Mówimy po angielsku 🇬🇧 i po polsku 🇵🇱"}
     };
-
-    const els = document.querySelectorAll('[data-i18n]');
-    const btnEN = document.getElementById('btnEN');
-    const btnPL = document.getElementById('btnPL');
-
-    function applyLanguage() {
-      els.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.textContent = strings[lang][key];
-      });
+    const $ = s => document.querySelector(s);
+    const apply = () => {
       document.documentElement.lang = lang;
-      const isEN = lang === 'en';
-      btnEN.classList.toggle('active', isEN);
-      btnEN.setAttribute('aria-pressed', isEN.toString());
-      btnPL.classList.toggle('active', !isEN);
-      btnPL.setAttribute('aria-pressed', (!isEN).toString());
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        el.textContent = strings[lang][el.dataset.i18n];
+      });
+      $('#btnEN').classList.toggle('active', lang==='en');
+      $('#btnPL').classList.toggle('active', lang==='pl');
       localStorage.setItem('puffin_lang', lang);
-    }
-
-    btnEN.addEventListener('click', () => { lang = 'en'; applyLanguage(); });
-    btnPL.addEventListener('click', () => { lang = 'pl'; applyLanguage(); });
-
-    // Default EN; restore saved preference if present
-    const saved = localStorage.getItem('puffin_lang');
-    if (saved === 'pl' || saved === 'en') lang = saved;
-    applyLanguage();
+    };
+    $('#btnEN').onclick = () => { lang='en'; apply(); };
+    $('#btnPL').onclick = () => { lang='pl'; apply(); };
+    apply();
   </script>
 </body>
 </html>
